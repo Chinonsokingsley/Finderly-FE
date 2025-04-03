@@ -26,13 +26,13 @@ const countries = [
 
 // Sample data for search results
 const availableResults = [
-  { id: 1, title: 'A', wikipedia: 'Link', wikidata: 'Link' },
-  { id: 2, title: 'B', wikipedia: 'Link', wikidata: 'Link' },
+  { id: 1, title: 'A', wikipedia: 'https://example.com', wikidata: 'https://example.com' },
+  { id: 2, title: 'B', wikipedia: 'https://example.com', wikidata: 'https://example.com' },
 ];
 
 const nonAvailableResults = [
-  { id: 1, title: 'C', wikidata: 'Link' },
-  { id: 2, title: 'D', wikidata: 'Link' },
+  { id: 1, title: 'C', wikidata: 'https://example.com' },
+  { id: 2, title: 'D', wikidata: 'https://example.com' },
 ];
 
 // Sample data for extension tracker
@@ -58,18 +58,50 @@ function populateTable(tableId, data) {
     <tr>
       <td>${item.id}</td>
       <td>${item.title}</td>
-      ${item.wikipedia ? `<td><a href="${item.wikipedia}">Link</a></td>` : ''}
-      <td><a href="${item.wikidata}">Link</a></td>
+      ${item.wikipedia ? `<td><a href="${item.wikipedia}">Wikipedia</a></td>` : '<td>-</td>'}
+      <td><a href="${item.wikidata}">Wikidata</a></td>
     </tr>
   `).join('');
 }
 
-// Populate tables and countries on page load
-document.addEventListener('DOMContentLoaded', () => {
+// Function to handle tab switching
+function changeTab(event) {
+  event.preventDefault(); // Prevent default anchor behavior
+
+  // Remove active class from all sections and tab links
+  document.querySelectorAll('.tab-content').forEach(section => section.classList.remove('active'));
+  document.querySelectorAll('.tab-link').forEach(tab => tab.classList.remove('active'));
+
+  // Get the target tab's ID from the href attribute
+  const targetTab = event.target.getAttribute('href').substring(1); 
+
+  // Show the selected section and highlight the active tab
+  document.getElementById(targetTab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Attach click event listeners to all tabs
+document.querySelectorAll('.tab-link').forEach(tab => {
+  tab.addEventListener('click', changeTab);
+});
+
+// Function to initialize the page and ensure the first tab is active
+function initializePage() {
+  // Set the first tab as active on load
+  const firstTab = document.querySelector('.tab-link');
+  const firstContent = document.querySelector('.tab-content');
+
+  if (firstTab && firstContent) {
+    firstTab.classList.add('active');
+    firstContent.classList.add('active');
+  }
+
+  // Populate tables and countries
   populateTable('available-results', availableResults);
   populateTable('non-available-results', nonAvailableResults);
   populateCountries();
 
+  // Populate tracker table
   const trackerTableBody = document.querySelector('#tracker-table tbody');
   trackerTableBody.innerHTML = extensions.map(ext => `
     <tr>
@@ -80,4 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <td>${ext.status}</td>
     </tr>
   `).join('');
-});
+}
+
+// Ensure everything is set up when the page loads
+document.addEventListener('DOMContentLoaded', initializePage);

@@ -17,8 +17,10 @@ nav ul {
   color: black;
   padding: 0;
   background-color: white;
-  text-align: center;
   margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 80px;
 }
 
 nav ul li {
@@ -36,6 +38,7 @@ section {
   margin: 20px;
   background-color: #fff;
   border-radius: 5px;
+  display: none;
 }
 
 form label {
@@ -102,4 +105,12 @@ table th {
 
 #learn-more ul li {
   margin: 10px 0;
+}
+
+.tab-content.active {
+ display: block;
+}
+
+.tab-content {
+  display: none;
 }

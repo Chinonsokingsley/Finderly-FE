@@ -14,16 +14,15 @@
   <!-- Navigation -->
   <nav>
     <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#extension-request">Extension</a></li>
-      <li><a href="#learn-more">Learn More</a></li>
-      <li><a href="#extension-tracker">ExtensionTracker</a></li>
+      <li><a href="#home" class="tab-link">Home</a></li>
+      <li><a href="#extension-request" class="tab-link">Extension</a></li>
+      <li><a href="#learn-more" class="tab-link">Learn More</a></li>
+      <li><a href="#extension-tracker" class="tab-link">ExtensionTracker</a></li>
     </ul>
   </nav>
 
   <!-- Home Section -->
-  <section id="home">
-    <h2>Home</h2>
+  <section id="home" class="tab-content active">
     <form id="home-form">
       <label for="country">Select Country:</label>
       <select id="country" name="country">
@@ -54,7 +53,7 @@
   </section>
 
   <!-- Extension Request Section -->
-  <section id="extension-request">
+  <section id="extension-request" class="tab-content">
     <h2>Request for an Extension</h2>
     <form id="extension-form">
       <label for="has-query">Do you have an existing SPARQL query?</label>
@@ -284,7 +283,7 @@
   </section>
 
   <!-- Extension Tracker Section -->
-  <section id="extension-tracker">
+  <section id="extension-tracker" class="tab-content">
     <h2>Extension Tracker</h2>
     <table id="tracker-table">
       <thead>
@@ -303,7 +302,7 @@
   </section>
 
   <!-- Learn More Section -->
-  <section id="learn-more">
+  <section id="learn-more" class="tab-content">
     <h2>Learn More</h2>
     <p>Welcome to the Finderly documentation page! Here's how you can use the tool:</p>
     <h3>1. Home Page</h3>
