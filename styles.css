@@ -20,7 +20,7 @@ nav ul {
   margin: 0;
   display: flex;
   justify-content: flex-end;
-  gap: 40px;
+  gap: 10px;
 }
 
 nav ul li {
