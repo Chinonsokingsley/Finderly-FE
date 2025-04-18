@@ -36,6 +36,7 @@ nav ul {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+  gap: 10px;
 }
 
 nav ul li {
@@ -137,20 +138,4 @@ table th {
 
 .tab-content {
   display: none;
-}
-
-/* Mobile default styles */
-.nav-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Desktop override */
-@media (min-width: 768px) {
-  .nav-wrapper {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
 }
